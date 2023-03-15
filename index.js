@@ -16,7 +16,7 @@ App.use(
     methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
     credentials: true,
     optionsSuccessStatus: 204,
-    origin: true,
+    origin: "*",
   })
 );
 
@@ -25,5 +25,5 @@ App.use("/api/v1", userRoute);
 
 App.listen(process.env.PORT, async () => {
   await db();
-  console.log(`server is running on http://localhost:${process.env.PORT}`);
+  console.log(`server is running on port ${process.env.PORT}`);
 });
