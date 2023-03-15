@@ -16,11 +16,12 @@ App.use(
     methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
     credentials: true,
     optionsSuccessStatus: 204,
-    origin: "*",
+    origin: true,
   })
 );
 
 App.use("/api/v1", userRoute);
+
 
 
 App.listen(process.env.PORT, async () => {
