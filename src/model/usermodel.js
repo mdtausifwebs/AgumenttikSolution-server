@@ -12,6 +12,6 @@ const userModel = new mongoose.Schema(
   }
 );
 userModel.methods.genrateToken = function () {
-  return jwt.sign({ id: this._id }, process.env.passcode);
+  return jwt.sign({ id: this._id }, process.env.PASSCODE);
 };
 module.exports = mongoose.model("users", userModel);
