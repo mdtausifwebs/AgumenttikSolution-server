@@ -15,14 +15,11 @@ App.use(
     methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
     credentials: true,
     optionsSuccessStatus: 204,
-    origin:
-      process.env.NODE_ENV === "production"
-        ? process.env.FRONTEND_URL
-        : "https://agumenttiksolutionserver.onrender.com",
+    origin: true,
   })
 );
-const userRoute=require("./src/router/userroute")
-App.use("/api/v1",userRoute)
+const userRoute = require("./src/router/userroute");
+App.use("/api/v1", userRoute);
 // App.options("*", cors());
 App.listen(process.env.PORT, async () => {
   await db();
