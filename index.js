@@ -18,7 +18,7 @@ App.use(
     origin:
       process.env.NODE_ENV === "production"
         ? process.env.FRONTEND_URL
-        : "http://localhost:3000",
+        : "https://agumenttiksolutionserver.onrender.com",
   })
 );
 const userRoute=require("./src/router/userroute")
