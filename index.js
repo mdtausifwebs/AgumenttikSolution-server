@@ -20,7 +20,6 @@ App.use(
 );
 const userRoute = require("./src/router/userroute");
 App.use("/api/v1", userRoute);
-// App.options("*", cors());
 App.listen(process.env.PORT, async () => {
   await db();
   console.log(`server is running on http://localhost:${process.env.PORT}`);
