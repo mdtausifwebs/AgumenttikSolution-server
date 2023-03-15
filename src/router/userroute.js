@@ -4,7 +4,7 @@ const {
   registerLogin,
   getuser,
   logout,
-} = require("../Controller/UserController");
+} = require("../controller/usercontroller");
 const routers = require("express").Router();
 
 routers.post("/register", registerLogin);
