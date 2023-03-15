@@ -5,6 +5,7 @@ const userModel = new mongoose.Schema(
     email: String,
     name: String,
     password: String,
+    roll: { type: String, default: "user" },
   },
   {
     timeseries: true,
