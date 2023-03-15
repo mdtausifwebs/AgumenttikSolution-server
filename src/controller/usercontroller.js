@@ -3,7 +3,7 @@ const userModel = require("../model/usermodel");
 const registerLogin = async (req, res) => {
   // console.log('req', req);
   try {
-    let user = await userModel.findOne({ sub: req.body.sub });
+    let user = await userModel.findOne({ email: req.body.email });
     console.log("user", user);
     const times = {
       expire: Date(Date.now() + 30 * 24 * 60 * 60 * 1000),
