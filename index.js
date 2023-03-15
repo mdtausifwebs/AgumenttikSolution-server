@@ -21,6 +21,8 @@ App.use(
         : "http://localhost:3000",
   })
 );
+const userRoute=require("./src/router/userroute")
+App.use("/api/v1",userRoute)
 App.options("*", cors());
 App.listen(process.env.PORT, async () => {
   await db();
