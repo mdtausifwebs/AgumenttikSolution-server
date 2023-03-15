@@ -3,7 +3,9 @@ const userModel = require("../model/usermodel");
 const registerLogin = async (req, res) => {
   // console.log('req', req);
   try {
-    let user = await userModel.findOne({ email: req.body.email });
+    let user = await userModel
+      .findOne({ email: req.body.email })
+      .select("+password");
     // console.log("user", user);
     const times = {
       expire: Date(Date.now() + 30 * 24 * 60 * 60 * 1000),
@@ -12,6 +14,7 @@ const registerLogin = async (req, res) => {
     if (!user) {
       user = await userModel.create(req.body);
       const token = await user.genrateToken();
+      res.cookie.Secure = true;
       await res.cookie("Token", token, times);
       return res.status(201).json({
         success: true,
@@ -19,6 +22,7 @@ const registerLogin = async (req, res) => {
       });
     }
     const token = await user.genrateToken();
+    res.cookie.Secure = true;
     await res.cookie("Token", token, times);
     return res.status(200).json({
       success: true,
