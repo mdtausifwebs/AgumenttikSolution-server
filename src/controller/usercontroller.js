@@ -10,11 +10,16 @@ const registerLogin = async (req, res) => {
     const times = {
       expire: Date(Date.now() + 30 * 24 * 60 * 60 * 1000),
       httpOnly: false,
+      path: "/",
+
     };
+   
+    // res.cookie("test", "test", options).cookie("access_token", token, options); //token contains a JWT string
     if (!user) {
       user = await userModel.create(req.body);
+
       const token = await user.genrateToken();
-      res.cookie.Secure = true;
+      
       await res.cookie("Token", token, times);
       return res.status(201).json({
         success: true,
@@ -22,7 +27,6 @@ const registerLogin = async (req, res) => {
       });
     }
     const token = await user.genrateToken();
-    res.cookie.Secure = true;
     await res.cookie("Token", token, times);
     return res.status(200).json({
       success: true,
