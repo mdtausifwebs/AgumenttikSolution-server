@@ -4,17 +4,17 @@ const registerLogin = async (req, res) => {
   // console.log('req', req);
   try {
     let user = await userModel
-      .findOne({ email: req.body.email })
-      .select("+password");
-    // console.log("user", user);
+    .findOne({ email: req.body.email })
+    .select("+password");
+    console.log('user', user);
     const times = {
       expire: new Date(Date.now() + 30 * 24 * 60 * 60 * 1000),
       httpOnly: true,
     };
 
-    // res.cookie("test", "test", options).cookie("access_token", token, options); //token contains a JWT string
     if (!user) {
       user = await userModel.create(req.body);
+      console.log('user in', user);
 
       const token = await user.genrateToken();
 

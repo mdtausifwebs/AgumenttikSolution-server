@@ -7,7 +7,7 @@ const bodyParser = require("body-parser");
 const cookieParser = require("cookie-parser");
 const cors = require("cors");
 const userRoute = require("./src/router/userroute");
-App.set('trust proxy', 1)
+App.set("trust proxy", 1);
 App.use(express.json());
 
 App.use(bodyParser.urlencoded({ extended: true }));
@@ -19,12 +19,11 @@ App.use(
     credentials: true,
     optionsSuccessStatus: 204,
     origin: true,
+    preflightContinue: false,
   })
 );
 
 App.use("/api/v1", userRoute);
-
-
 
 App.listen(process.env.PORT, async () => {
   await db();
